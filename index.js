@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const { connectdb } = require("./db");
 const userRouter = require("./routes/user");
-
+const authRouter = require("./routes/auth");
 
 const app = express();
 app.use(morgan("dev"));
@@ -15,6 +15,7 @@ app.get("/api/test", (req, res) => {
 });
 
 app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
 
 const startServer = async () => {
     try {
